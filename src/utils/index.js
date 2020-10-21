@@ -1,11 +1,3 @@
-const commands = {
-  registerProfessions: 'registrar-oficios',
-  updateProfession: 'actualizar-oficios',
-  professions: 'oficios',
-  delete: 'borrar',
-  help: 'ayuda'
-}
-
 const professionsWhitelist = [
   'alquimista',
   'campesino',
@@ -49,19 +41,31 @@ const allowedProfession = (data, whitelist) => {
 }
 
 const noData = data => {
-  if (data === null || !data.length)
+  if (data === null || !data.length) {
     return true
+  }
 
-    return false
+  return false
 }
 
 const formatIncomingData = data => {
   return data.map(item => item.toLowerCase())
 }
 
+const formatMemberData = member => ({ nickname: member.nickname, id: member.id })
+
+const formatProfessionsData = professions => {
+  return professions.map(profession => {
+    const temp = profession.split(':')
+    return { name: temp[0], level: temp[1] }
+  })
+}
+
 module.exports = {
+  professionsWhitelist,
   noData,
   formatIncomingData,
-  professionsWhitelist,
-  allowedProfession
+  allowedProfession,
+  formatMemberData,
+  formatProfessionsData
 }
