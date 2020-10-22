@@ -67,7 +67,7 @@ const formatIncomingData = data => {
   return data.map(item => item.toLowerCase())
 }
 
-const formatMemberData = member => ({ nickname: member.nickname, id: member.id })
+const formatMemberData = member => ({ nickname: member.nickname || member.user.username, id: member.id })
 
 const formatProfessionsData = professions => {
   return professions.map(profession => {
