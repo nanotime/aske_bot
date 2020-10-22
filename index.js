@@ -38,6 +38,7 @@ client.on('message', message => {
   userCommands.registerProfessions(command, message, args)
   userCommands.updateProfession(command, message, args)
   userCommands.getProfessions(command, message, args)
+  userCommands.deleteRegister(command, message, args)
 })
 
 client.login(process.env.BOT_TOKEN)

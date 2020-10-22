@@ -21,7 +21,8 @@
     "NO_MEMBER": "Aún no eres miembro del canal, para ser miembro del canal un admin debe darte un apodo",
     "PROFESSION_NOT_ALLOWED": "Oficio o nivel de oficio invalidos",
     "NOT_FOUND": "No he podido encontrar nada",
-    "NOT_FINISHED": "No he podido terminar el proceso"
+    "NOT_FINISHED": "No he podido terminar el proceso",
+    "NO_ADMIN": "No puedes usar este comando a menos que seas admin"
   },
   "REGISTER": {
     "DONE": "¡Registro completo!"

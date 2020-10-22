@@ -1,4 +1,4 @@
-const ROLES_WHITELIST = ['Agente', 'Mando', 'Consejo']
+const ROLES_WHITELIST = ['Mando', 'Consejo', 'Agente']
 
 const professionsWhitelist = [
   'alquimista',
@@ -103,6 +103,10 @@ const isMember = roles => {
   return roles.some(role => ROLES_WHITELIST.includes(role.name))
 }
 
+const isAdmin = roles => {
+  return roles.includes(ROLES_WHITELIST[0]) || roles.includes(ROLES_WHITELIST[1])
+}
+
 module.exports = {
   professionsWhitelist,
   noData,
@@ -111,5 +115,6 @@ module.exports = {
   formatMemberData,
   formatProfessionsData,
   reduceJobs,
-  isMember
+  isMember,
+  isAdmin
 }
