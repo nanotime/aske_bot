@@ -1,4 +1,4 @@
-const ROLES_WHITELIST = require('../../config.json').ROLES_WHITELIST
+const ROLES_WHITELIST = ['Agente', 'Mando', 'Consejo']
 
 const professionsWhitelist = [
   'alquimista',
