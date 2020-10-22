@@ -2,7 +2,7 @@ const commands = {
   registerProfessions: 'registrar-oficios',
   updateProfession: 'actualizar-oficios',
   professions: 'oficios',
-  deleteRegister: 'deleteRegister',
+  deleteRegister: 'eliminar',
   delete: 'borrar',
   help: 'ayuda'
 }
