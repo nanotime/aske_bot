@@ -1,6 +1,7 @@
 const utils = require('../utils')
 const commands = require('./constants').commands
 const MESSAGES = require('../messages.json')
+
 const { Job } = require('../utils/db')
 const { formatMemberData, formatProfessionsData } = require('../utils')
 
@@ -15,7 +16,7 @@ const { formatMemberData, formatProfessionsData } = require('../utils')
 async function updateProfession(command, message, data = null) {
   // Check the correct command
   if (command === commands.updateProfession) {
-    if (!message.member.nickname) {
+    if (!utils.isMember(message.member.roles.cache)) {
       message.reply(MESSAGES.ERRORS.NO_MEMBER)
       return
     }
@@ -34,8 +35,8 @@ async function updateProfession(command, message, data = null) {
     // Check if the args in professions are alowes
     const isAllowedProfession = utils.allowedProfession(jobs, utils.professionsWhitelist)
 
-    if (!isAllowedProfession.allowed) {
-      message.reply(`${MESSAGES.ERRORS.PROFESSION_NOT_ALLOWED} ${isAllowedProfession.profession}`)
+    if (!isAllowedProfession) {
+      message.reply(`${MESSAGES.ERRORS.PROFESSION_NOT_ALLOWED}`)
       return
     }
 

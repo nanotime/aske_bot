@@ -17,10 +17,12 @@ async function getProfessions(command, message, data = null) {
         message.reply(MESSAGES.GET.FOUND)
 
         utils.professionsWhitelist.forEach(job => {
-          // TODO: reduce the list to get a single object array and clean the empty ones
           const tempJobList = list.filter(item => item.name === job)
-          console.log(tempJobList)
-          tempJobList.forEach(item => message.channel.send(`**${item.name}** \n _${item.member}_ -> ${item.level}\n`))
+          const jobList = utils.reduceJobs(tempJobList)
+          jobList.forEach(item => {
+            message.channel.send(`**${item.name}** \n`)
+            item.jobs.forEach(el => message.channel.send(`_${el.member}_ -> ${el.level}\n`))
+          })
         })
         return
       } else {

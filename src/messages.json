@@ -4,7 +4,7 @@
     "COMMANDS": [
       {
         "name": "!registrar",
-        "description": "Te permite registrar tus oficios, ej: `!registrar oficios sastre:100 zapatero:100`"
+        "description": "Te permite registrar tus oficios, ej: `!registrar-oficios sastre:100 zapatero:100`"
       },
       {
         "name": "!actualizar-oficios",
@@ -19,7 +19,7 @@
   "ERRORS": {
     "NO_DATA": "No me has enviado ningún oficio, usa !help para aprender como",
     "NO_MEMBER": "Aún no eres miembro del canal, para ser miembro del canal un admin debe darte un apodo",
-    "PROFESSION_NOT_ALLOWED": "No puedo agregar un oficio inexistente: ",
+    "PROFESSION_NOT_ALLOWED": "Oficio o nivel de oficio invalidos",
     "NOT_FOUND": "No he podido encontrar nada",
     "NOT_FINISHED": "No he podido terminar el proceso"
   },
@@ -30,6 +30,6 @@
     "DONE": "¡Actualización completa!"
   },
   "GET": {
-    "FOUND": "Aquí tienes los resultados"
+    "FOUND": "Aquí tienes los resultados (espera a que termine antes de enviar más comandos)"
   }
 }

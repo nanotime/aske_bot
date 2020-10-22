@@ -17,7 +17,7 @@ const { formatMemberData, formatProfessionsData } = require('../utils')
 async function registerProfessions(command, message, data = null) {
   // Check the correct command
   if (command === commands.registerProfessions) {
-    if (!message.member.nickname) {
+    if (!utils.isMember(message.member.roles.cache)) {
       message.reply(MESSAGES.ERRORS.NO_MEMBER)
       return
     }
@@ -37,8 +37,8 @@ async function registerProfessions(command, message, data = null) {
     // Check if the args in professions are alowes
     const isAllowedProfession = utils.allowedProfession(jobs, utils.professionsWhitelist)
 
-    if (!isAllowedProfession.allowed) {
-      message.reply(`${MESSAGES.ERRORS.PROFESSION_NOT_ALLOWED} ${isAllowedProfession.profession}`)
+    if (!isAllowedProfession) {
+      message.reply(`${MESSAGES.ERRORS.PROFESSION_NOT_ALLOWED}`)
       return
     }
 
