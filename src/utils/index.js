@@ -1,4 +1,5 @@
 const ROLES_WHITELIST = ['Mando', 'Consejo', 'Agente']
+const ADMIN_ROLES = ['Mando', 'Consejo']
 
 const professionsWhitelist = [
   'alquimista',
@@ -67,7 +68,7 @@ const formatIncomingData = data => {
   return data.map(item => item.toLowerCase())
 }
 
-const formatMemberData = member => ({ nickname: member.nickname || member.user.username, id: member.id })
+const formatMemberData = member => ({ nickname: member.nickname.toLowerCase(), id: member.id })
 
 const formatProfessionsData = professions => {
   return professions.map(profession => {
@@ -99,8 +100,10 @@ const reduceJobs = jobs => {
   return reduced
 }
 
-const isMember = roles => {
-  return roles.some(role => ROLES_WHITELIST.includes(role.name))
+const isMember = (roles, member) => {
+  const haveRole = roles.some(role => ROLES_WHITELIST.includes(role.name))
+  const haveNickname = member.nickname
+  return haveRole && haveNickname
 }
 
 const isAdmin = roles => {

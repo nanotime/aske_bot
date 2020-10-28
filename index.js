@@ -1,18 +1,5 @@
-const http = require('http')
-const express = require('express')
-const app = express()
 const Discord = require('discord.js')
-
-// Keep glitch.io app alive
-app.get('/', (request, response) => {
-  console.log(Date.now() + ' Ping Received')
-  response.sendStatus(200)
-})
-
-app.listen(process.env.PORT)
-setInterval(() => {
-  http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`)
-}, 280000)
+const config = require('./config.json')
 
 const client = new Discord.Client()
 const PREFIX = '!'
@@ -41,4 +28,4 @@ client.on('message', message => {
   userCommands.deleteRegister(command, message, args)
 })
 
-client.login(process.env.BOT_TOKEN)
+client.login(config.BOT_TOKEN)

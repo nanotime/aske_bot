@@ -8,6 +8,10 @@ async function getProfessions(command, message, data = null) {
     try {
       if (utils.noData(data)) {
         const jobs = await Job.findAll()
+        if (!jobs.length) {
+          message.reply('No Pude encontrar nada')
+          return
+        }
 
         const list = await Promise.all(jobs.map(async job => {
           const member = await Member.findOne({ where: { id: job.MemberId } })

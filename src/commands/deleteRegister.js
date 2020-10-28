@@ -16,7 +16,7 @@ async function deleteRegister(command, message, data = null) {
   // Check the correct command
   if (command === commands.deleteRegister) {
     const roles = message.member.roles.cache
-    if (!utils.isMember(roles)) {
+    if (!utils.isMember(roles, message.member)) {
       message.reply(MESSAGES.ERRORS.NO_MEMBER)
       return
     }
@@ -36,10 +36,13 @@ async function deleteRegister(command, message, data = null) {
     data = data.map(arg => arg.toLowerCase())
 
     try {
-      const memberToDelete = await Member.findOne({ where: { ninckname: data[0] } })
-      const idToDestroy = memberToDelete.dataValues.id
-      await Job.destroy({ where: { MemberId: idToDestroy } })
-      message.reply(`He removido los oficios de ${memberToDelete.dataValues.ninckname}`)
+      const member = await Member.findOne({ where: { nickname: data[0] } })
+      const jobs = await Job.findAll({ where: { MemberId: member.dataValues.id } })
+      jobs.forEach(async job => {
+        await job.destroy()
+      })
+      await member.destroy()
+      message.reply('Entrada removida')
       // Update the job
     } catch (error) {
       console.log(error)

@@ -16,7 +16,8 @@ const { formatMemberData, formatProfessionsData } = require('../utils')
 async function updateProfession(command, message, data = null) {
   // Check the correct command
   if (command === commands.updateProfession) {
-    if (!utils.isMember(message.member.roles.cache)) {
+    const roles = message.member.roles.cache
+    if (!utils.isMember(roles, message.member)) {
       message.reply(MESSAGES.ERRORS.NO_MEMBER)
       return
     }
