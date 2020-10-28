@@ -1,10 +1,17 @@
 const Discord = require('discord.js')
+const http = require('http')
 
 const client = new Discord.Client()
 const PREFIX = '!'
 
 const userCommands = require('./src/commands')
 const { Job, Member } = require('./src/utils/db')
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200)
+  res.end('ok')
+})
+server.listen(3000)
 
 client.once('ready', () => {
   Member.sync()
