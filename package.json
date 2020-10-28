@@ -20,10 +20,6 @@
     "sequelize": "^6.3.5",
     "sqlite3": "^5.0.0"
   },
-  "engines": {
-    "node": "15.0.0",
-    "npm": "7.0.2"
-  },
   "devDependencies": {
     "eslint": "^7.11.0",
     "eslint-config-standard": "^14.1.1",
