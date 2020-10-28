@@ -1,3 +1,4 @@
+require('dotenv').config()
 const Discord = require('discord.js')
 const config = require('./config.json')
 
@@ -28,4 +29,4 @@ client.on('message', message => {
   userCommands.deleteRegister(command, message, args)
 })
 
-client.login(config.BOT_TOKEN)
+client.login(process.env.BOT_TOKEN)

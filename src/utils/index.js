@@ -1,5 +1,4 @@
 const ROLES_WHITELIST = ['Mando', 'Consejo', 'Agente']
-const ADMIN_ROLES = ['Mando', 'Consejo']
 
 const professionsWhitelist = [
   'alquimista',
